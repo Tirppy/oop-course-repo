@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj": {}
+    "C:\\Sandu\\II\\Sem1\\OOP\\Labs\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj": {}
   },
   "projects": {
-    "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj": {
+    "C:\\Sandu\\II\\Sem1\\OOP\\Labs\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj",
+        "projectUniqueName": "C:\\Sandu\\II\\Sem1\\OOP\\Labs\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj",
         "projectName": "cs-classifcation",
-        "projectPath": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj",
+        "projectPath": "C:\\Sandu\\II\\Sem1\\OOP\\Labs\\oop-course-repo\\lab-papers-please\\cs-classifcation\\cs-classifcation.csproj",
         "packagesPath": "C:\\Users\\sandu\\.nuget\\packages\\",
-        "outputPath": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-papers-please\\cs-classifcation\\obj\\",
+        "outputPath": "C:\\Sandu\\II\\Sem1\\OOP\\Labs\\oop-course-repo\\lab-papers-please\\cs-classifcation\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
           "C:\\Users\\sandu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
