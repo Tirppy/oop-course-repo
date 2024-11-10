@@ -2,12 +2,19 @@ namespace CoffeeLibrary
 {
     public class Barista
     {
-        public void StartOrdering()
+        private List<Order> orders;
+
+        public Barista()
+        {
+            orders = new List<Order>();
+        }
+        
+        public void StartOrder()
         {
             Console.WriteLine("Welcome to the Coffee Shop!");
-            List<Coffee> orders = new List<Coffee>();
 
-            while (true)
+            bool ordering = true;
+            while (ordering)
             {
                 Console.WriteLine("Please select a coffee to order:");
                 Console.WriteLine("1. Americano");
@@ -17,107 +24,114 @@ namespace CoffeeLibrary
                 Console.WriteLine("5. Finish order");
 
                 int choice = int.Parse(Console.ReadLine());
-
-                if (choice == 5)
-                {
-                    break;
-                }
-
-                Coffee coffee = null;
-
                 switch (choice)
                 {
                     case 1:
-                        coffee = OrderAmericano();
+                        orders.Add(OrderAmericano());
                         break;
                     case 2:
-                        coffee = OrderCappuccino();
+                        orders.Add(OrderCappuccino());
                         break;
                     case 3:
-                        coffee = OrderPumpkinSpiceLatte();
+                        orders.Add(OrderPumpkinSpiceLatte());
                         break;
                     case 4:
-                        coffee = OrderSyrupCappuccino();
+                        orders.Add(OrderSyrupCappuccino());
+                        break;
+                    case 5:
+                        ordering = false;
                         break;
                     default:
                         Console.WriteLine("Invalid selection. Please try again.");
                         break;
                 }
-
-                if (coffee != null)
-                {
-                    orders.Add(coffee);
-                }
             }
 
-            Console.WriteLine("Your order details:");
-            foreach (var coffee in orders)
+            foreach (Order order in orders)
             {
-                Console.WriteLine($"\n{coffee.GetType().Name}:");
-                coffee.PrintCoffeeDetails(); 
+                Coffee coffee = null;
+                switch (order.CoffeeType)
+                {
+                    case "Americano":
+                        coffee = Americano.MakeAmericano(order.MlOfWater, order.Intensity);
+                        break;
+                    case "Cappuccino":
+                        coffee = Cappuccino.MakeCappuccino(order.MlOfMilk, order.Intensity);
+                        break;
+                    case "Pumpkin Spice Latte":
+                        coffee = PumpkinSpiceLatte.MakeLatte(order.MlOfMilk, order.MgOfPumpkinSpice, order.Intensity);
+                        break;
+                    case "Syrup Cappuccino":
+                        coffee = SyrupCappuccino.MakeSyrupCappuccino(order.MlOfMilk, order.SyrupType, order.Intensity);
+                        break;
+                }
             }
 
             Console.WriteLine("Thank you for your order!");
         }
 
-        private Americano OrderAmericano()
+        private Order OrderAmericano()
         {
             Console.WriteLine("Ordering an Americano.");
-            Intensity intensity = SelectIntensity();
-            int mlOfWater = SelectMlOfWater();
+            Coffee.Intensity intensity = GetIntensity();
+            int mlOfWater = GetMlOfWater();
 
-            return Americano.MakeAmericano(intensity, mlOfWater);
+            return new Order("Americano", intensity) { MlOfWater = mlOfWater };
         }
 
-        private Cappuccino OrderCappuccino()
+        private Order OrderCappuccino()
         {
             Console.WriteLine("Ordering a Cappuccino.");
-            Intensity intensity = SelectIntensity();
-            int mlOfMilk = SelectMlOfMilk();
+            Coffee.Intensity intensity = GetIntensity();
+            int mlOfMilk = GetMlOfMilk();
 
-            return Cappuccino.MakeCappuccino(intensity, mlOfMilk);
+            return new Order("Cappuccino", intensity) { MlOfMilk = mlOfMilk };
         }
-
-        private PumpkinSpiceLatte OrderPumpkinSpiceLatte()
+        
+        private Order OrderPumpkinSpiceLatte()
         {
             Console.WriteLine("Ordering a Pumpkin Spice Latte.");
-            Intensity intensity = SelectIntensity();
-            int mlOfMilk = SelectMlOfMilk();
-            int mgOfPumpkinSpice = SelectMgOfPumpkinSpice();
+            Coffee.Intensity intensity = GetIntensity();
+            int mlOfMilk = GetMlOfMilk();
+            int mgOfPumpkinSpice = GetMgOfPumpkinSpice();
 
-            return PumpkinSpiceLatte.MakePumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice);
+            return new Order("Pumpkin Spice Latte", intensity) { MlOfMilk = mlOfMilk, MgOfPumpkinSpice = mgOfPumpkinSpice };
         }
-
-        private SyrupCappuccino OrderSyrupCappuccino()
+        
+        private Order OrderSyrupCappuccino()
         {
             Console.WriteLine("Ordering a Syrup Cappuccino.");
-            Intensity intensity = SelectIntensity();
-            int mlOfMilk = SelectMlOfMilk();
-            SyrupType syrup = SelectSyrup();
+            Coffee.Intensity intensity = GetIntensity();
+            int mlOfMilk = GetMlOfMilk();
+            SyrupCappuccino.SyrupType syrup = GetSyrupType();
 
-            return SyrupCappuccino.MakeSyrupCappuccino(intensity, mlOfMilk, syrup);
+            return new Order("Syrup Cappuccino", intensity) { MlOfMilk = mlOfMilk, SyrupType = syrup };
         }
 
-        private Intensity SelectIntensity()
+        private Coffee.Intensity GetIntensity()
         {
             Console.WriteLine("Select intensity:");
             Console.WriteLine("1. LIGHT");
             Console.WriteLine("2. NORMAL");
             Console.WriteLine("3. STRONG");
-
-            int intensityChoice = int.Parse(Console.ReadLine());
-            return (Intensity)(intensityChoice - 1);
+            int choice = int.Parse(Console.ReadLine());
+            return choice switch
+            {
+                1 => Coffee.Intensity.LIGHT,
+                2 => Coffee.Intensity.NORMAL,
+                3 => Coffee.Intensity.STRONG,
+                _ => Coffee.Intensity.NORMAL
+            };
         }
 
-        private int SelectMlOfWater()
+        private int GetMlOfWater()
         {
             Console.WriteLine("Select ml of water:");
             Console.WriteLine("1. 50 ml");
             Console.WriteLine("2. 100 ml");
             Console.WriteLine("3. 150 ml");
-
-            int mlChoice = int.Parse(Console.ReadLine());
-            return mlChoice switch
+            int choice = int.Parse(Console.ReadLine());
+            return choice switch
             {
                 1 => 50,
                 2 => 100,
@@ -126,15 +140,14 @@ namespace CoffeeLibrary
             };
         }
 
-        private int SelectMlOfMilk()
+        private int GetMlOfMilk()
         {
             Console.WriteLine("Select ml of milk:");
             Console.WriteLine("1. 50 ml");
             Console.WriteLine("2. 100 ml");
             Console.WriteLine("3. 150 ml");
-
-            int mlChoice = int.Parse(Console.ReadLine());
-            return mlChoice switch
+            int choice = int.Parse(Console.ReadLine());
+            return choice switch
             {
                 1 => 50,
                 2 => 100,
@@ -143,15 +156,14 @@ namespace CoffeeLibrary
             };
         }
 
-        private int SelectMgOfPumpkinSpice()
+        private int GetMgOfPumpkinSpice()
         {
             Console.WriteLine("Select mg of pumpkin spice:");
             Console.WriteLine("1. 10 mg");
             Console.WriteLine("2. 20 mg");
             Console.WriteLine("3. 30 mg");
-
-            int mgChoice = int.Parse(Console.ReadLine());
-            return mgChoice switch
+            int choice = int.Parse(Console.ReadLine());
+            return choice switch
             {
                 1 => 10,
                 2 => 20,
@@ -160,16 +172,46 @@ namespace CoffeeLibrary
             };
         }
 
-        private SyrupType SelectSyrup()
+        private SyrupCappuccino.SyrupType GetSyrupType()
         {
             Console.WriteLine("Select syrup:");
-            foreach (SyrupType syrup in Enum.GetValues(typeof(SyrupType)))
+            Console.WriteLine("1. MACADAMIA");
+            Console.WriteLine("2. VANILLA");
+            Console.WriteLine("3. COCONUT");
+            Console.WriteLine("4. CARAMEL");
+            Console.WriteLine("5. CHOCOLATE");
+            Console.WriteLine("6. POPCORN");
+            int choice = int.Parse(Console.ReadLine());
+            return choice switch
             {
-                Console.WriteLine($"{(int)syrup + 1}. {syrup}");
-            }
+                1 => SyrupCappuccino.SyrupType.MACADAMIA,
+                2 => SyrupCappuccino.SyrupType.VANILLA,
+                3 => SyrupCappuccino.SyrupType.COCONUT,
+                4 => SyrupCappuccino.SyrupType.CARAMEL,
+                5 => SyrupCappuccino.SyrupType.CHOCOLATE,
+                6 => SyrupCappuccino.SyrupType.POPCORN,
+                _ => SyrupCappuccino.SyrupType.POPCORN
+            };
+        }
 
-            int syrupChoice = int.Parse(Console.ReadLine());
-            return (SyrupType)(syrupChoice - 1);
+        private class Order
+        {
+            public string CoffeeType { get; }
+            public Coffee.Intensity Intensity { get; }
+            public int MlOfMilk { get; set; }
+            public int MlOfWater { get; set; }
+            public int MgOfPumpkinSpice { get; set; }
+            public SyrupCappuccino.SyrupType SyrupType { get; set; }
+
+            public Order(string coffeeType, Coffee.Intensity intensity)
+            {
+                CoffeeType = coffeeType;
+                Intensity = intensity;
+                MlOfMilk = 0;
+                MlOfWater = 0;
+                MgOfPumpkinSpice = 0;
+                SyrupType = default;
+            }
         }
     }
 }

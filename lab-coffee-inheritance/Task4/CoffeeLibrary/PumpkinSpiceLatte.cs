@@ -1,35 +1,33 @@
 namespace CoffeeLibrary
 {
-    internal class PumpkinSpiceLatte : Cappuccino
+    class PumpkinSpiceLatte : Cappuccino
     {
-        internal int MgOfPumpkinSpice { get; private set; }
-        internal const string CoffeeName = "PumpkinSpiceLatte";
+        private int mgOfPumpkinSpice;
 
-        protected PumpkinSpiceLatte(Intensity intensity, int mlOfMilk, int mgOfPumpkinSpice) 
-            : base(intensity, mlOfMilk)
+        public int MgOfPumpkinSpice
         {
-            MgOfPumpkinSpice = mgOfPumpkinSpice;
+            get { return mgOfPumpkinSpice; }
         }
 
-        internal static PumpkinSpiceLatte MakePumpkinSpiceLatte(Intensity intensity, int mlOfMilk, int mgOfPumpkinSpice)
+        public PumpkinSpiceLatte(Intensity intensity, int mgOfPumpkinSpice, int mlOfMilk) 
+            : base(intensity, "Pumpkin spice latte", mlOfMilk)
         {
-            var pumpkinSpiceLatte = new PumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice);
-            pumpkinSpiceLatte.MakeCoffee();
-            Console.WriteLine($"Adding {mlOfMilk} ml of milk");
-            Console.WriteLine($"Adding {mgOfPumpkinSpice} mg of pumpkin spice");
-            return pumpkinSpiceLatte;
+            this.mgOfPumpkinSpice = mgOfPumpkinSpice;
         }
 
-        internal override void PrintCoffeeDetails()
+        public override void PrintCoffeeDetails()
         {
-            base.PrintCoffeeDetails();  
-            Console.WriteLine($"Pumpkin Spice: {MgOfPumpkinSpice} mg");
+            base.PrintCoffeeDetails();
+            Console.WriteLine("Mg of Pumpkin Spice: " + mgOfPumpkinSpice + "\n");
         }
 
-        protected override void MakeCoffee()
+        public static PumpkinSpiceLatte MakeLatte(int mlOfMilk, int mgOfPumpkinSpice, Intensity intensity)
         {
-            Console.WriteLine($"Making {CoffeeName}");
-            Console.WriteLine($"Intensity set to {CoffeeIntensity}");
+            PumpkinSpiceLatte coffee = new PumpkinSpiceLatte(intensity, mgOfPumpkinSpice, mlOfMilk);
+            coffee.MakeCoffeeBase();
+            Console.WriteLine("Amount of milk: " + mlOfMilk + " ml");
+            Console.WriteLine("Amount of pumpkin spice: " + mgOfPumpkinSpice + " mg\n");
+            return coffee;
         }
     }
 }

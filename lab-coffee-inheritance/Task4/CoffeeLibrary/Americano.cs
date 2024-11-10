@@ -1,33 +1,31 @@
 namespace CoffeeLibrary
 {
-    internal class Americano : Coffee
+    class Americano : Coffee
     {
-        internal int MlOfWater { get; private set; }
-        internal const string CoffeeName = "Americano";
+        private int mlOfWater;
 
-        protected Americano(Intensity intensity, int mlOfWater) : base(intensity)
+        public int MlOfWater
         {
-            MlOfWater = mlOfWater;
+            get { return mlOfWater; }
         }
 
-        internal static Americano MakeAmericano(Intensity intensity, int mlOfWater)
+        public Americano(int mlOfWater, Intensity intensity) : base(intensity, "Americano")
         {
-            var americano = new Americano(intensity, mlOfWater);
-            americano.MakeCoffee();
-            Console.WriteLine($"Adding {mlOfWater} ml of water");
-            return americano;
+            this.mlOfWater = mlOfWater;
         }
 
-        internal override void PrintCoffeeDetails()
+        public override void PrintCoffeeDetails()
         {
-            base.PrintCoffeeDetails(); 
-            Console.WriteLine($"Water: {MlOfWater} ml");
+            base.PrintCoffeeDetails();
+            Console.WriteLine("Ml of water: " + mlOfWater + "\n");
         }
 
-        protected override void MakeCoffee()
+        public static Americano MakeAmericano(int mlOfWater, Intensity intensity)
         {
-            Console.WriteLine($"Making {CoffeeName}");
-            Console.WriteLine($"Intensity set to {CoffeeIntensity}");
+            Americano coffee = new Americano(mlOfWater, intensity);
+            coffee.MakeCoffeeBase();
+            Console.WriteLine("Amount of water: " + mlOfWater + " ml\n");
+            return coffee;
         }
     }
 }

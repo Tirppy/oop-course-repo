@@ -1,35 +1,43 @@
 namespace CoffeeLibrary
 {
-    internal class SyrupCappuccino : Cappuccino
+    class SyrupCappuccino : Cappuccino
     {
-        internal SyrupType Syrup { get; private set; }
-        internal new const string CoffeeName = "SyrupCappuccino";
+        private SyrupType syrup;
 
-        protected SyrupCappuccino(Intensity intensity, int mlOfMilk, SyrupType syrup)
-            : base(intensity, mlOfMilk)
+        public SyrupType Syrup
         {
-            Syrup = syrup;
+            get { return syrup; }
         }
 
-        internal static SyrupCappuccino MakeSyrupCappuccino(Intensity intensity, int mlOfMilk, SyrupType syrup)
+        public enum SyrupType
         {
-            var syrupCappuccino = new SyrupCappuccino(intensity, mlOfMilk, syrup);
-            syrupCappuccino.MakeCoffee();
-            Console.WriteLine($"Adding {mlOfMilk} ml of milk");
-            Console.WriteLine($"Adding syrup: {syrup}");
-            return syrupCappuccino;
+            MACADAMIA,
+            VANILLA,
+            COCONUT,
+            CARAMEL,
+            CHOCOLATE,
+            POPCORN
         }
 
-        internal override void PrintCoffeeDetails()
+        public SyrupCappuccino(Intensity intensity, SyrupType syrup, int mlOfMilk) 
+            : base(intensity, "Syrup Cappuccino", mlOfMilk)
         {
-            base.PrintCoffeeDetails();  // Calls Cappuccino's PrintCoffeeDetails for intensity and milk
-            Console.WriteLine($"Syrup: {Syrup}");
+            this.syrup = syrup;
         }
 
-        protected override void MakeCoffee()
+        public override void PrintCoffeeDetails()
         {
-            Console.WriteLine($"Making {CoffeeName}");
-            Console.WriteLine($"Intensity set to {CoffeeIntensity}");
+            base.PrintCoffeeDetails();
+            Console.WriteLine("Syrup Type: " + syrup + "\n");
+        }
+
+        public static SyrupCappuccino MakeSyrupCappuccino(int mlOfMilk, SyrupType syrup, Intensity intensity)
+        {
+            SyrupCappuccino coffee = new SyrupCappuccino(intensity, syrup, mlOfMilk);
+            coffee.MakeCoffeeBase();
+            Console.WriteLine("Amount of milk: " + mlOfMilk + " ml");
+            Console.WriteLine("Syrup type: " + syrup + "\n");
+            return coffee;
         }
     }
 }

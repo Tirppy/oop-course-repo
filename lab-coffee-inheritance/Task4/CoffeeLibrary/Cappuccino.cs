@@ -1,33 +1,36 @@
 namespace CoffeeLibrary
 {
-    internal class Cappuccino : Coffee
+    class Cappuccino : Coffee
     {
-        internal int MlOfMilk { get; private set; }
-        internal const string CoffeeName = "Cappuccino";
+        private int mlOfMilk;
 
-        protected Cappuccino(Intensity intensity, int mlOfMilk) : base(intensity)
+        public int MlOfMilk
         {
-            MlOfMilk = mlOfMilk;
+            get { return mlOfMilk; }
         }
 
-        internal static Cappuccino MakeCappuccino(Intensity intensity, int mlOfMilk)
+        public Cappuccino(Intensity intensity, string name, int mlOfMilk) : base(intensity, name)
         {
-            var cappuccino = new Cappuccino(intensity, mlOfMilk);
-            cappuccino.MakeCoffee();
-            Console.WriteLine($"Adding {mlOfMilk} ml of milk");
-            return cappuccino;
+            this.mlOfMilk = mlOfMilk;
         }
 
-        internal override void PrintCoffeeDetails()
+        public Cappuccino(int mlOfMilk, Intensity intensity) : base(intensity, "Cappuccino")
         {
-            base.PrintCoffeeDetails();  
-            Console.WriteLine($"Milk: {MlOfMilk} ml");
+            this.mlOfMilk = mlOfMilk;
         }
 
-        protected override void MakeCoffee()
+        public override void PrintCoffeeDetails()
         {
-            Console.WriteLine($"Making {CoffeeName}");
-            Console.WriteLine($"Intensity set to {CoffeeIntensity}");
+            base.PrintCoffeeDetails();
+            Console.WriteLine("Ml of milk: " + mlOfMilk);
+        }
+
+        public static Cappuccino MakeCappuccino(int mlOfMilk, Intensity intensity)
+        {
+            Cappuccino coffee = new Cappuccino(mlOfMilk, intensity);
+            coffee.MakeCoffeeBase();
+            Console.WriteLine("Amount of milk: " + mlOfMilk + " ml\n");
+            return coffee;
         }
     }
 }

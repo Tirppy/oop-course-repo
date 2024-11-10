@@ -1,41 +1,31 @@
 ﻿namespace CoffeeLibrary
 {
-    internal enum Intensity
+    class Coffee
     {
-        LIGHT,
-        MEDIUM,
-        STRONG
-    }
-
-    internal enum SyrupType
-    {
-        MACADAMIA,
-        VANILLA,
-        COCONUT,
-        CARAMEL,
-        CHOCOLATE,
-        POPCORN
-    }
-
-    internal class Coffee
-    {
-        internal Intensity CoffeeIntensity { get; private set; }
-        internal const string Name = "Coffee";
-
-        protected Coffee(Intensity coffeeIntensity)
+        public enum Intensity
         {
-            CoffeeIntensity = coffeeIntensity;
+            LIGHT,
+            NORMAL,
+            STRONG
         }
 
-        internal virtual void PrintCoffeeDetails()
+        public Intensity CoffeeIntensity { get; set; }
+        private string name;
+
+        public Coffee(Intensity coffeeIntensity, string name)
         {
-            Console.WriteLine($"Intensity: {CoffeeIntensity}");
+            this.CoffeeIntensity = coffeeIntensity;
+            this.name = name;
         }
 
-        protected virtual void MakeCoffee()
+        public virtual void PrintCoffeeDetails()
         {
-            Console.WriteLine($"Making {Name}");
-            Console.WriteLine($"Intensity set to {CoffeeIntensity}");
+            Console.WriteLine("You wanted: " + name + "\nwith intensity: " + CoffeeIntensity);
+        }
+
+        public void MakeCoffeeBase()
+        {
+            Console.WriteLine("I am making: " + name + "\nIntensity set to: " + CoffeeIntensity);
         }
     }
 }

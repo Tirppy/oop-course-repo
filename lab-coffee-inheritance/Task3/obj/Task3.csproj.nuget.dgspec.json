@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj": {}
+    "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj": {}
   },
   "projects": {
-    "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj": {
+    "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj",
+        "projectUniqueName": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj",
         "projectName": "Task3",
-        "projectPath": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj",
+        "projectPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\Task3.csproj",
         "packagesPath": "C:\\Users\\sandu\\.nuget\\packages\\",
-        "outputPath": "C:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\obj\\",
+        "outputPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sandu\\AppData\\Roaming\\NuGet\\NuGet.Config",

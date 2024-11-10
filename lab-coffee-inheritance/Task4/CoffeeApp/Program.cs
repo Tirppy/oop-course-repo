@@ -1,13 +1,13 @@
 ﻿using CoffeeLibrary;
 
-namespace CoffeeShopApp
+namespace CoffeeMain
 {
     public class Program
     {
         static void Main(string[] args)
         {
             Barista barista = new Barista();
-            barista.StartOrdering();
+            barista.StartOrder();
         }
     }
 }
