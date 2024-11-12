@@ -1,14 +1,8 @@
 namespace CoffeeLibrary
 {
-    class SyrupCappuccino : Cappuccino
+    
+    internal class SyrupCappuccino : Cappuccino
     {
-        private SyrupType syrup;
-
-        public SyrupType Syrup
-        {
-            get { return syrup; }
-        }
-
         public enum SyrupType
         {
             MACADAMIA,
@@ -18,26 +12,28 @@ namespace CoffeeLibrary
             CHOCOLATE,
             POPCORN
         }
+        private SyrupType syrup;
 
-        public SyrupCappuccino(Intensity intensity, SyrupType syrup, int mlOfMilk) 
-            : base(intensity, "Syrup Cappuccino", mlOfMilk)
+        
+        public SyrupCappuccino(Intensity intensityCoffe, int mltrOfMilk, SyrupType syrup, string coffee = "SyrupCappuccino")
+            : base(intensityCoffe, mltrOfMilk, coffee)
         {
             this.syrup = syrup;
         }
 
+        
         public override void PrintCoffeeDetails()
         {
             base.PrintCoffeeDetails();
-            Console.WriteLine("Syrup Type: " + syrup + "\n");
+            Console.WriteLine($"Syrup type: {syrup}");
         }
 
-        public static SyrupCappuccino MakeSyrupCappuccino(int mlOfMilk, SyrupType syrup, Intensity intensity)
+        
+        public SyrupCappuccino MakeSyrupCappuccino()
         {
-            SyrupCappuccino coffee = new SyrupCappuccino(intensity, syrup, mlOfMilk);
-            coffee.MakeCoffeeBase();
-            Console.WriteLine("Amount of milk: " + mlOfMilk + " ml");
-            Console.WriteLine("Syrup type: " + syrup + "\n");
-            return coffee;
+            base.MakeCappuccino();
+            Console.WriteLine($"Adding {syrup} syrup");
+            return this;
         }
     }
 }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\Test\\lab-coffee-inheritance\\Task4\\CoffeeLibrary\\CoffeeLibrary.csproj",
+      "projectUniqueName": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task4 - Copy - Copy\\CoffeeLibrary\\CoffeeLibrary.csproj",
       "projectName": "CoffeeLibrary",
-      "projectPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\Test\\lab-coffee-inheritance\\Task4\\CoffeeLibrary\\CoffeeLibrary.csproj",
+      "projectPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task4 - Copy - Copy\\CoffeeLibrary\\CoffeeLibrary.csproj",
       "packagesPath": "C:\\Users\\sandu\\.nuget\\packages\\",
-      "outputPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\Test\\lab-coffee-inheritance\\Task4\\CoffeeLibrary\\obj\\",
+      "outputPath": "c:\\Sandu\\Uni\\II\\OOP\\oop-course-repo\\lab-coffee-inheritance\\Task4 - Copy - Copy\\CoffeeLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sandu\\AppData\\Roaming\\NuGet\\NuGet.Config",

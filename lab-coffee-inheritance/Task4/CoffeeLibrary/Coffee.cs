@@ -1,6 +1,7 @@
 ﻿namespace CoffeeLibrary
 {
-    class Coffee
+    
+    internal class Coffee
     {
         public enum Intensity
         {
@@ -8,24 +9,29 @@
             NORMAL,
             STRONG
         }
-
-        public Intensity CoffeeIntensity { get; set; }
+        private Intensity coffeeIntensity;
         private string name;
 
-        public Coffee(Intensity coffeeIntensity, string name)
+        
+        public Coffee(Intensity coffeeIntensity, string name = "Coffee")
         {
-            this.CoffeeIntensity = coffeeIntensity;
+            this.coffeeIntensity = coffeeIntensity;
             this.name = name;
         }
 
+        
         public virtual void PrintCoffeeDetails()
         {
-            Console.WriteLine("You wanted: " + name + "\nwith intensity: " + CoffeeIntensity);
+            Console.WriteLine($"Recipe for {name}");
+            Console.WriteLine($"Coffee intensity: {coffeeIntensity}");
         }
 
-        public void MakeCoffeeBase()
+        
+        public Coffee MakeCoffee()
         {
-            Console.WriteLine("I am making: " + name + "\nIntensity set to: " + CoffeeIntensity);
+            Console.WriteLine($"Making {name}");
+            Console.WriteLine($"Setting intensity to {coffeeIntensity}");
+            return new Coffee(coffeeIntensity, name);
         }
     }
 }

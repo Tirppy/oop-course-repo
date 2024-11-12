@@ -8,7 +8,7 @@ namespace CoffeeLibrary
         {
             orders = new List<Order>();
         }
-        
+
         public void StartOrder()
         {
             Console.WriteLine("Welcome to the Coffee Shop!");
@@ -50,21 +50,25 @@ namespace CoffeeLibrary
             foreach (Order order in orders)
             {
                 Coffee coffee = null;
-                switch (order.CoffeeType)
+
+                if (order is AmericanoOrder americanoOrder)
                 {
-                    case "Americano":
-                        coffee = Americano.MakeAmericano(order.MlOfWater, order.Intensity);
-                        break;
-                    case "Cappuccino":
-                        coffee = Cappuccino.MakeCappuccino(order.MlOfMilk, order.Intensity);
-                        break;
-                    case "Pumpkin Spice Latte":
-                        coffee = PumpkinSpiceLatte.MakeLatte(order.MlOfMilk, order.MgOfPumpkinSpice, order.Intensity);
-                        break;
-                    case "Syrup Cappuccino":
-                        coffee = SyrupCappuccino.MakeSyrupCappuccino(order.MlOfMilk, order.SyrupType, order.Intensity);
-                        break;
+                    coffee = new Americano(americanoOrder.Intensity, americanoOrder.MlOfWater).MakeAmericano();
                 }
+                else if (order is CappuccinoOrder cappuccinoOrder)
+                {
+                    coffee = new Cappuccino(cappuccinoOrder.Intensity, cappuccinoOrder.MlOfMilk).MakeCappuccino();
+                }
+                else if (order is PumpkinSpiceLatteOrder pumpkinOrder)
+                {
+                    coffee = new PumpkinSpiceLatte(pumpkinOrder.Intensity, pumpkinOrder.MlOfMilk, pumpkinOrder.MgOfPumpkinSpice).MakePumpkinSpiceLatte();
+                }
+                else if (order is SyrupCappuccinoOrder syrupOrder)
+                {
+                    coffee = new SyrupCappuccino(syrupOrder.Intensity, syrupOrder.MlOfMilk, syrupOrder.SyrupType).MakeSyrupCappuccino();
+                }
+
+                coffee?.PrintCoffeeDetails();
             }
 
             Console.WriteLine("Thank you for your order!");
@@ -75,8 +79,7 @@ namespace CoffeeLibrary
             Console.WriteLine("Ordering an Americano.");
             Coffee.Intensity intensity = GetIntensity();
             int mlOfWater = GetMlOfWater();
-
-            return new Order("Americano", intensity) { MlOfWater = mlOfWater };
+            return new AmericanoOrder(intensity, mlOfWater);
         }
 
         private Order OrderCappuccino()
@@ -84,28 +87,25 @@ namespace CoffeeLibrary
             Console.WriteLine("Ordering a Cappuccino.");
             Coffee.Intensity intensity = GetIntensity();
             int mlOfMilk = GetMlOfMilk();
-
-            return new Order("Cappuccino", intensity) { MlOfMilk = mlOfMilk };
+            return new CappuccinoOrder(intensity, mlOfMilk);
         }
-        
+
         private Order OrderPumpkinSpiceLatte()
         {
             Console.WriteLine("Ordering a Pumpkin Spice Latte.");
             Coffee.Intensity intensity = GetIntensity();
             int mlOfMilk = GetMlOfMilk();
             int mgOfPumpkinSpice = GetMgOfPumpkinSpice();
-
-            return new Order("Pumpkin Spice Latte", intensity) { MlOfMilk = mlOfMilk, MgOfPumpkinSpice = mgOfPumpkinSpice };
+            return new PumpkinSpiceLatteOrder(intensity, mlOfMilk, mgOfPumpkinSpice);
         }
-        
+
         private Order OrderSyrupCappuccino()
         {
             Console.WriteLine("Ordering a Syrup Cappuccino.");
             Coffee.Intensity intensity = GetIntensity();
             int mlOfMilk = GetMlOfMilk();
             SyrupCappuccino.SyrupType syrup = GetSyrupType();
-
-            return new Order("Syrup Cappuccino", intensity) { MlOfMilk = mlOfMilk, SyrupType = syrup };
+            return new SyrupCappuccinoOrder(intensity, mlOfMilk, syrup);
         }
 
         private Coffee.Intensity GetIntensity()
@@ -126,7 +126,7 @@ namespace CoffeeLibrary
 
         private int GetMlOfWater()
         {
-            Console.WriteLine("Select ml of water:");
+            Console.WriteLine("Select ml of water (choose a number):");
             Console.WriteLine("1. 50 ml");
             Console.WriteLine("2. 100 ml");
             Console.WriteLine("3. 150 ml");
@@ -142,7 +142,7 @@ namespace CoffeeLibrary
 
         private int GetMlOfMilk()
         {
-            Console.WriteLine("Select ml of milk:");
+            Console.WriteLine("Select ml of milk (choose a number):");
             Console.WriteLine("1. 50 ml");
             Console.WriteLine("2. 100 ml");
             Console.WriteLine("3. 150 ml");
@@ -158,7 +158,7 @@ namespace CoffeeLibrary
 
         private int GetMgOfPumpkinSpice()
         {
-            Console.WriteLine("Select mg of pumpkin spice:");
+            Console.WriteLine("Select mg of pumpkin spice (choose a number):");
             Console.WriteLine("1. 10 mg");
             Console.WriteLine("2. 20 mg");
             Console.WriteLine("3. 30 mg");
@@ -174,13 +174,13 @@ namespace CoffeeLibrary
 
         private SyrupCappuccino.SyrupType GetSyrupType()
         {
-            Console.WriteLine("Select syrup:");
-            Console.WriteLine("1. MACADAMIA");
-            Console.WriteLine("2. VANILLA");
-            Console.WriteLine("3. COCONUT");
-            Console.WriteLine("4. CARAMEL");
-            Console.WriteLine("5. CHOCOLATE");
-            Console.WriteLine("6. POPCORN");
+            Console.WriteLine("Select syrup (choose a number):");
+            Console.WriteLine("1. Macadamia");
+            Console.WriteLine("2. Vanilla");
+            Console.WriteLine("3. Coconut");
+            Console.WriteLine("4. Caramel");
+            Console.WriteLine("5. Chocolate");
+            Console.WriteLine("6. Popcorn");
             int choice = int.Parse(Console.ReadLine());
             return choice switch
             {
@@ -192,26 +192,6 @@ namespace CoffeeLibrary
                 6 => SyrupCappuccino.SyrupType.POPCORN,
                 _ => SyrupCappuccino.SyrupType.POPCORN
             };
-        }
-
-        private class Order
-        {
-            public string CoffeeType { get; }
-            public Coffee.Intensity Intensity { get; }
-            public int MlOfMilk { get; set; }
-            public int MlOfWater { get; set; }
-            public int MgOfPumpkinSpice { get; set; }
-            public SyrupCappuccino.SyrupType SyrupType { get; set; }
-
-            public Order(string coffeeType, Coffee.Intensity intensity)
-            {
-                CoffeeType = coffeeType;
-                Intensity = intensity;
-                MlOfMilk = 0;
-                MlOfWater = 0;
-                MgOfPumpkinSpice = 0;
-                SyrupType = default;
-            }
         }
     }
 }
