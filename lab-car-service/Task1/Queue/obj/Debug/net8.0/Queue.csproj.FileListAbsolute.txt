@@ -1,0 +1,12 @@
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\bin\Debug\net8.0\Queue.deps.json
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\bin\Debug\net8.0\Queue.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\bin\Debug\net8.0\Queue.pdb
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.AssemblyInfoInputs.cache
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.AssemblyInfo.cs
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.csproj.CoreCompileInputs.cache
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.sourcelink.json
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\refint\Queue.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\Queue.pdb
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task1\Queue\obj\Debug\net8.0\ref\Queue.dll
