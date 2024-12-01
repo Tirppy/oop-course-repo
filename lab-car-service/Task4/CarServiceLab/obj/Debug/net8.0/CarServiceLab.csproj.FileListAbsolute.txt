@@ -1,0 +1,15 @@
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\bin\Debug\net8.0\CarServiceLab.exe
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\bin\Debug\net8.0\CarServiceLab.deps.json
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\bin\Debug\net8.0\CarServiceLab.runtimeconfig.json
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\bin\Debug\net8.0\CarServiceLab.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\bin\Debug\net8.0\CarServiceLab.pdb
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.AssemblyInfoInputs.cache
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.AssemblyInfo.cs
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.csproj.CoreCompileInputs.cache
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.sourcelink.json
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\refint\CarServiceLab.dll
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.pdb
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\CarServiceLab.genruntimeconfig.cache
+C:\Sandu\Uni\II\OOP\oop-course-repo\lab-car-service\Task4\CarServiceLab\obj\Debug\net8.0\ref\CarServiceLab.dll
